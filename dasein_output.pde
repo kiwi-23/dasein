@@ -14,10 +14,10 @@ int prev_val= 0;
 int current_r, current_c;
 
 void setup(){
-  //String portName = Serial.list()[0];
-  //myPort = new Serial(this, portName, 9600);
-  //fullScreen();
-  //noCursor();
+  String portName = Serial.list()[0];
+  myPort = new Serial(this, portName, 9600);
+  fullScreen();
+  noCursor();
   size(500,400);
   rows= height/unit +1;
   columns= width/unit +1;
@@ -117,12 +117,12 @@ class Grid{
 }
 
 void draw(){
-  //if (myPort.available() > 0) 
-  //{
-    //String val = myPort.readStringUntil('\n');
-    //println(val);
-    //if(val!=null){
-      //val= trim(val);
+  if (myPort.available() > 0) 
+  {
+    String val = myPort.readStringUntil('\n');
+    println(val);
+    if(val!=null){
+      val= trim(val);
       String val="1";
       if(val.equals("1")){
         prev_val=0;
@@ -148,6 +148,6 @@ void draw(){
           rect(square.cpos, square.rpos, unit, unit);
         }
       }
-  //  }
-  //}
+    }
+  }
 }
